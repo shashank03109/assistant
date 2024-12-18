@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="avatar-area">
+            <img id="avatar" src="{{ url_for('static', filename='avatar/idle.webp') }}" alt="Assistant Avatar">
+        </div>
+         <div class="output-area">
+            <div id="text-output">
+              {% for line in initial_messages %}
+                 <p>{{ line }}</p>
+              {% endfor %}
+            </div>
+         </div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Type your command...">
+            <button onclick="sendInput()">Send</button>
+            <button onclick="startVoiceInput()">Voice</button>
+             <button onclick="clearOutput()">Clear</button>
+        </div>
+    </div>
+     <script src="{{ url_for('static', filename='animations.js') }}"></script>
+</body>
+</html>
